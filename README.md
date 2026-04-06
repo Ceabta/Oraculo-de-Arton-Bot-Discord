@@ -1,7 +1,6 @@
+# 🔮 Oráculo de Arton - Discord Bot
 
-# 🤖 Ficha RPG - Discord Bot
-
-Um bot de Discord feito em TypeScript para gerenciar fichas de personagem de RPG diretamente no servidor! Ideal para campanhas online ou play-by-chat.
+Um bot de Discord feito em TypeScript para campanhas de **Tormenta 20**! Gerencie fichas de personagem e consulte magias diretamente no servidor — ideal para campanhas online ou play-by-chat.
 
 ## ✨ Funcionalidades
 
@@ -10,6 +9,7 @@ Um bot de Discord feito em TypeScript para gerenciar fichas de personagem de RPG
 - ♻️ Atualizar qualquer atributo do personagem (ex: HP, Mana)
 - 🗑️ Deletar personagens com confirmação em 2 etapas
 - 📖 Paginação automática ao listar muitos personagens
+- 🔮 Buscar magias por nome com informações completas (círculo, escola, aprimoramentos e mais)
 - 💾 Armazenamento local via arquivo JSON
 
 ---
@@ -46,14 +46,15 @@ Um bot de Discord feito em TypeScript para gerenciar fichas de personagem de RPG
 
 ## 🔧 Comandos disponíveis
 
-| Comando               | Descrição                                                |
-|-----------------------|----------------------------------------------------------|
-| `/addpersonagem`      | Adiciona um novo personagem                              |
-| `/listarpersonagens`  | Lista os personagens do usuário com paginação            |
-| `/verpersonagem`      | Mostra os detalhes de um personagem específico           |
-| `/atualizar`          | Atualiza um ou mais atributos de um personagem           |
-| `/deletarpersonagem`  | Remove um personagem com confirmação por botão           |
-| `/ping`               | Verifica se o bot está online                            |
+| Comando               | Descrição                                                              |
+|-----------------------|------------------------------------------------------------------------|
+| `/addpersonagem`      | Adiciona um novo personagem                                            |
+| `/listarpersonagens`  | Lista os personagens do usuário com paginação                          |
+| `/verpersonagem`      | Mostra os detalhes de um personagem específico                         |
+| `/atualizar`          | Atualiza um ou mais atributos de um personagem                         |
+| `/deletarpersonagem`  | Remove um personagem com confirmação por botão                         |
+| `/buscarmagia`        | Busca uma magia do Tormenta 20 por nome (parcial, sem acento)          |
+| `/ping`               | Verifica se o bot está online                                          |
 
 ---
 
@@ -61,18 +62,35 @@ Um bot de Discord feito em TypeScript para gerenciar fichas de personagem de RPG
 
 ```
 src/
-├── commands/           # Comandos slash separados por arquivo
+├── commands/               # Comandos slash separados por arquivo
 │   ├── addpersonagem.ts
-│   ├── atualizar.ts
+│   ├── atualizarstatus.ts
+│   ├── buscarmagia.ts
 │   ├── deletarpersonagem.ts
 │   ├── listarpersonagens.ts
 │   └── verpersonagem.ts
 ├── data/
-│   └── personagens.json  # Armazena os personagens por usuário
-├── deploy-commands.ts  # Script para registrar os comandos
-├── emojis.ts           # Emojis usados no embed
-└── index.ts            # Arquivo principal do bot
+│   ├── magias.json           # 256 magias do Tormenta 20 e suplementos
+│   └── personagens.json      # Armazena os personagens por usuário
+├── deploy-commands.ts        # Script para registrar os comandos
+├── emojis.ts                 # Emojis usados nos embeds
+└── index.ts                  # Arquivo principal do bot
 ```
+
+---
+
+## 🪄 Magias disponíveis
+
+O comando `/buscarmagia` cobre **256 magias** extraídas dos seguintes suplementos:
+
+| Suplemento         | Magias |
+|--------------------|--------|
+| Tormenta 20        | 198    |
+| Heróis de Arton    | 22     |
+| Ameaças de Arton   | 7      |
+| Deuses de Arton    | 29     |
+
+A busca é por nome parcial e ignora acentos — `/buscarmagia armadura` retorna todas as magias com "armadura" no nome, de qualquer suplemento.
 
 ---
 
@@ -99,14 +117,13 @@ src/
 
 ![image](https://github.com/user-attachments/assets/967a63a4-6f02-4e87-9e3f-283d452f8247)
 
-
 ---
 
 ## 📦 Instalação local
 
 ```bash
-git clone https://github.com/seuusuario/ficha-rpg-discord-bot
-cd ficha-rpg-discord-bot
+git clone https://github.com/Ceabta/Ficha-RPG-Bot-Discord-TypeScript
+cd Ficha-RPG-Bot-Discord-TypeScript
 npm install
 ```
 
@@ -122,7 +139,7 @@ CLIENT_ID=seu_id_de_aplicacao
 ## 🚀 Executando
 
 ```bash
-npx ts-node src/deploy-commands.ts  # Registrar comandos
+npx ts-node src/deploy-commands.ts  # Registrar comandos (rode ao adicionar novos comandos)
 npx ts-node src/index.ts            # Rodar o bot
 ```
 
