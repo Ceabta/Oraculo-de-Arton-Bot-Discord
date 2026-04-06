@@ -115,7 +115,8 @@ A busca é por nome parcial e ignora acentos — `/buscarmagia armadura` retorna
 
 ## 📷 Exemplo de visualização no Discord
 
-![image](https://github.com/user-attachments/assets/967a63a4-6f02-4e87-9e3f-283d452f8247)
+<img width="903" height="406" alt="image" src="https://github.com/user-attachments/assets/e3dc971e-7bed-4677-bb75-804f23527cab" />
+
 
 ---
 
