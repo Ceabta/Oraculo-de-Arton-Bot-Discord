@@ -11,6 +11,7 @@ import verpersonagem from './commands/verpersonagem';
 import atualizarstatus from './commands/atualizarstatus';
 import listarpersonagens from './commands/listarpersonagens';
 import deletarpersonagem from './commands/deletarpersonagem';
+import buscarmagia from './commands/buscarmagia';
 
 dotenv.config();
 
@@ -25,7 +26,8 @@ const commands: Record<string, Comando> = {
     verpersonagem,
     atualizarstatus,
     listarpersonagens,
-    deletarpersonagem
+    deletarpersonagem,
+    buscarmagia,
 };
 
 const client = new Client({
@@ -33,7 +35,7 @@ const client = new Client({
 });
 
 client.once('ready', () => {
-  console.log(`🤖 Bot logado como ${client.user?.tag}`);
+  console.log(`🔮 Oráculo de Arton online como ${client.user?.tag}`);
 });
 
 client.on('interactionCreate', async interaction => {
